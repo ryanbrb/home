@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{8A83B9BB-CBE6-D110-A403-27C539DD1CC9}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BatteryUI.cs">
     <Files>
-      <File FileName="Assets/Scripts/BatteryUI.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/BatteryUI.cs" Line="85" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
