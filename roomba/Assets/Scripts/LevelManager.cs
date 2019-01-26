@@ -7,10 +7,10 @@ public class LevelManager : MonoBehaviour
 {
     public string[] Level;
 
-    public void LoadRoom01(){
-        if(Level[01] != null) {
-            SceneManager.LoadScene(Level[01]);
-            Debug.Log("Loading " + Level[01]);
+    public void LoadRoom(int RoomNumber){
+        if(Level[RoomNumber] != null) {
+            SceneManager.LoadScene(Level[RoomNumber]);
+            Debug.Log("Loading " + Level[RoomNumber]);
         }
         else{
             Debug.Log("Level does not exist, or is not set in the Level Manager");
