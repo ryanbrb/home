@@ -219,6 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 837531437567400774}
   - component: {fileID: 4461184476139889383}
+  - component: {fileID: 7628536096041596245}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -291,12 +292,26 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7628536096041596245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4329687561680144774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7454104b07b7440d6b6c8313eb78cacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BatteryPower: {fileID: 0}
+  BatteryColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &4897415347842942537
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.1911618, g: 0.9056604, b: 0.055535804, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
