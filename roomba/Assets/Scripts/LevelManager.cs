@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string[] Level;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void LoadRoom01(){
+        if(Level[01] != null) {
+            SceneManager.LoadScene(Level[01]);
+            Debug.Log("Loading " + Level[01]);
+        }
+        else{
+            Debug.Log("Level does not exist, or is not set in the Level Manager");
+        }
     }
 }
