@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Pot.cs" />
     <Compile Include="Assets\Scripts\Roomba.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UITitleScreen.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Game Development/2019-GGJ/home/roomba/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
