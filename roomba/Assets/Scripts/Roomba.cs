@@ -27,6 +27,7 @@ public class Roomba : MonoBehaviour{
 
     void Start() {
         rig = GetComponent<Rigidbody2D>();
+		//rig.isKinematic = true;
         trans = transform;
         coll = GetComponent<CircleCollider2D>();
         var goal = GameObject.FindWithTag(GameTag.Home);
@@ -45,7 +46,11 @@ public class Roomba : MonoBehaviour{
             Scan(target == trans);
 
         }
-        rig.position = Vector2.MoveTowards(rig.position, target.transform.position, Time.fixedDeltaTime);
+		rig.velocity = (target.transform.position - trans.position).normalized;
+		//rig.MovePosition(rig.position + velocity * Time.fixedDeltaTime);
+		//rig.position = Vector2.MoveTowards(rig.position, target.transform.position, Time.fixedDeltaTime);
+		//Debug.Log(rig.velocity);
+		
     }
 
     /*Finds the closest dirt within the roomba sight range. Returns the following code:
@@ -100,9 +105,9 @@ public class Roomba : MonoBehaviour{
         //Debug.LogFormat("Collision: {0}", collision.gameObject.tag);
         switch (collision.gameObject.tag) {
             case GameTag.Pot:
-                //Break the pot. the dirt created from it is first priority. drops the original target
-                //coll.isTrigger = true;
-                break;
+				//Break the pot. the dirt created from it is first priority. drops the original target
+				target = collision.transform.GetComponent<Pot>().dirt.transform;
+				break;
             case GameTag.Cat:
                 //Scan the entire premise
                 Scan();

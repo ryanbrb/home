@@ -851,7 +851,7 @@ PrefabInstance:
     - target: {fileID: 3452588368647869120, guid: 7db70ecf20f57174b9dcb92010c1a483,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.232
+      value: -0.314
       objectReference: {fileID: 0}
     - target: {fileID: 3452588368647869120, guid: 7db70ecf20f57174b9dcb92010c1a483,
         type: 3}
@@ -1309,6 +1309,11 @@ PrefabInstance:
       propertyPath: WallHitArray.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 319ed138c7d514ec493ac5c0a15d38bd, type: 3}
+    - target: {fileID: 3253775387893278294, guid: 2f1b7491c4e007647b00281ea9f78019,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f1b7491c4e007647b00281ea9f78019, type: 3}
 --- !u!1001 &4407913222870531028
