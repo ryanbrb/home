@@ -12,6 +12,7 @@ public class BatteryUI : MonoBehaviour
     public Slider BatteryPower; 
     public static float countdown = 0.5f;
     public static Color BatteryColor;
+    public float BatteryTimer;
    
 
     public static Color Green;
@@ -48,19 +49,23 @@ public class BatteryUI : MonoBehaviour
 
                 if (value > 0.3f) // Change to green
                 {
-                    Debug.Log("Hello!");
-                    BatteryColor = Green; //new Color(0, 231, 0, 255); 
+                    BatteryColor = Green;
 
                 }else if (value <= 0.3f && value > 0.1f) // Change to yellow
                 {
-                    BatteryColor = Yellow; //new Color(246, 220, 2, 255);
+                    BatteryColor = Yellow;
 
-                }else if (value <= 0.1f && value >= 0f) // Change to red
+                }else if (value <= 0.1f && value > 0f) // Change to red
                 {
-                    BatteryColor = Red; //new Color(236, 0, 9, 255);
+                    BatteryColor = Red;
+                    LevelManager.CallEvent(GameEvent.Warning);
 
                 }
-                else
+                else if(value <= 0f) // Intiate game over
+                {
+                    LevelManager.CallEvent(GameEvent.BatterDead);
+
+                }else
                 {
                 }
                 _BatteryLife = value;
@@ -76,18 +81,28 @@ public class BatteryUI : MonoBehaviour
         Red = myRed;
         BatteryPower = GetComponent<Slider>();
 
+        // Sets starting BatteryLife
+        BatteryLife = 1f;
+
     }
-    public float b;
+
+
     // Update is called once per frame
     void Update()
     {
-        // Sets BatteryLife
-        BatteryLife = 0.05f;
+   
 
-        // Sets the BatteryPower at the start. This will be tied to a variable.
+        // Reads current BatteryPower
         BatteryPower.value = BatteryLife;
 
+        // Sets current BatteryColor
         BatteryFill.color = BatteryUI.BatteryColor;
-        //BatteryUI.BatteryColor;
+
+        // BatteryTimer increasing
+        BatteryTimer += Time.deltaTime;
+
+        // Converts BatteryTimer to countdown. Maximum time is the denominator of BatteryTimer
+        BatteryLife = 1 - (BatteryTimer / 2);
+
     }
 }
