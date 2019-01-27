@@ -24,6 +24,7 @@ public class UITitleScreen : MonoBehaviour
 
         currentButton = buttons[0];
         buttonIndex = 0;
+        Music.instance.SceneChange(Music.SceneTypeList.Menu, "main");
 
 
     }
