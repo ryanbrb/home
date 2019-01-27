@@ -12,7 +12,7 @@ public class Pot : MonoBehaviour
 	[SerializeField]
 	private GameObject myDirt;
 	public Dirt dirt { get; private set; }
-
+	public Animator MyAnimation;
 	//Declaring Audio Objects
 	private AudioSource PotSounds;
     public AudioClip PotHit;
@@ -44,6 +44,7 @@ public class Pot : MonoBehaviour
     }
 	private void KnockOver()
 	{
+		MyAnimation.SetTrigger("HitRight");
 		knocked = true;
 		myDirt.active = true;
 		myDirt.transform.parent = null;
