@@ -1253,26 +1253,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7882490136696320723, guid: bd7ce132e00bb9d4081e511d76b7bbfc,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7882490136696320723, guid: bd7ce132e00bb9d4081e511d76b7bbfc,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7882490136696320723, guid: bd7ce132e00bb9d4081e511d76b7bbfc,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7882490136696320723, guid: bd7ce132e00bb9d4081e511d76b7bbfc,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7418676996233679106, guid: bd7ce132e00bb9d4081e511d76b7bbfc,
         type: 3}
       propertyPath: m_GravityScale

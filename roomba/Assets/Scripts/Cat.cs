@@ -21,13 +21,13 @@ public class Cat : MonoBehaviour
 		if(v3.x > 0)
 		{
 			Vector3 newScale = myScale;
-			//newScale.x = newScale.x * -1;
+			newScale.x = newScale.x * -1;
 			transform.localScale = newScale;
 		}
 		else if(v3.x < 0)
 		{
 			Vector3 newScale = myScale;
-			newScale.x = newScale.x * -1;
+			//newScale.x = newScale.x * -1;
 			transform.localScale = newScale;
 		}
         transform.Translate(speed * v3.normalized * Time.deltaTime);
