@@ -63,7 +63,7 @@ public class BatteryUI : MonoBehaviour
                 }
                 else if(value <= 0f) // Intiate game over
                 {
-                    LevelManager.CallEvent(GameEvent.BatterDead);
+                    LevelManager.CallEvent(GameEvent.BatteryDead);
 
                 }else
                 {
