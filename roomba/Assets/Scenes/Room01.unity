@@ -716,7 +716,7 @@ PrefabInstance:
         type: 3}
       propertyPath: YellowAlert
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 5fa208966899f4b3c9fcb182012b9e23, type: 3}
     - target: {fileID: 9058272270112751875, guid: 19fe69c6e70d4eb4aa23d44fc7a39d96,
         type: 3}
       propertyPath: RedAlert
