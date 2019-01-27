@@ -191,7 +191,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1037270233}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
@@ -471,6 +471,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27c0b0571896149cc9c14825eb8521ef, type: 3}
+--- !u!1 &1037270233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2123604700124271147, guid: 2fead439cd603024c9cbf08f096b571b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2123604700277829459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1544546942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -621,7 +627,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2123604700277829459}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1037270233}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a1095b80f30f3e48bc89164ea090a19, type: 3}
