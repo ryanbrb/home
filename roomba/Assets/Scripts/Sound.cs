@@ -45,6 +45,7 @@ public class Sound : MonoBehaviour, iSound
 	/// <param name="myDeligate">What happens after. (Can be null)</param>
 	public void MakeSound(SoundTrigger trigger, AfterSound myDeligate)
 	{
+		
 		if(myDeligate != null)
 			myDeligate();
 		return;

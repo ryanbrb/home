@@ -44,8 +44,6 @@ public class BatteryUI : MonoBehaviour
 
     protected static float _BatteryLife;
     public static float BatteryLife
-       
-
     {
 
         get {
@@ -119,9 +117,14 @@ public class BatteryUI : MonoBehaviour
 
 
     }
+	private float multiplier = 1;
+	public static void Drain()
+	{
+		Instance.multiplier = 2;
+	}
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
    
 
@@ -132,10 +135,14 @@ public class BatteryUI : MonoBehaviour
         BatteryFill.color = BatteryUI.BatteryColor;
 
         // BatteryTimer increasing
-        BatteryTimer += Time.deltaTime;
+        BatteryTimer += (Time.deltaTime * multiplier);
 
         // Converts BatteryTimer to countdown. Maximum time is the denominator of BatteryTimer
         BatteryLife = 1 - (BatteryTimer / 60);
+		if(BatteryLife <= 0)
+		{
+			LevelManager.CallEvent(GameEvent.BatteryDead);
+		}
 
     }
 }

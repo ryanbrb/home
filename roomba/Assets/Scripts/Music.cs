@@ -47,7 +47,7 @@ public class Music : MonoBehaviour, iMusic
             source.clip = mySongs[0];
             source.Play();
         
-        } else if(sceneType == SceneTypeList.Game)
+        } else if(sceneType == SceneTypeList.Game && NameOfScene.Equals("Room01"))
         {
             source.clip = mySongs[1];
             source.Play();
