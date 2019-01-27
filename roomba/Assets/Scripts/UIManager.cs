@@ -69,6 +69,12 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+
+            if (Input.GetButtonDown("Reset"))
+            {
+                Debug.Log("reset button pushed");
+                BatteryUI.Drain();
+            }
             v3 = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0.0f);
             movement = MoveDiagonal;
             MoveDiagonal(v3);

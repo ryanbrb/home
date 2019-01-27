@@ -120,7 +120,7 @@ public class BatteryUI : MonoBehaviour
 	private float multiplier = 1;
 	public static void Drain()
 	{
-		Instance.multiplier = 2;
+		Instance.multiplier = 10;
 	}
 
 	// Update is called once per frame
