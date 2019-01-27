@@ -179,6 +179,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 701667685739689377, guid: 6c0e0c0859deffc4b96c3aae85c7b289,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce7008b72912cb4428a81e69ce6ebdf2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c0e0c0859deffc4b96c3aae85c7b289, type: 3}
 --- !u!4 &44546382 stripped
@@ -353,11 +359,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2123604700124271146, guid: 2fead439cd603024c9cbf08f096b571b,
-        type: 3}
-      propertyPath: SceneToLoad
-      value: Room02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fead439cd603024c9cbf08f096b571b, type: 3}
