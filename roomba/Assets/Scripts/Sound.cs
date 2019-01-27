@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sound : MonoBehaviour
+public interface iSound
+{
+	void MakeSound(Sound.SoundTrigger, Sound.AfterSound);
+}
+
+
+public class Sound : MonoBehaviour, iSound
 {
 	
-	public static Sound instance;
+	public static iSound instance;
 
 	public AudioClip Blah;
 	public AudioClip[] WallHit;
@@ -22,7 +28,7 @@ public class Sound : MonoBehaviour
 	public delegate void AfterSound();
 	public AfterSound callWhenDone;
 
-	public enum SoundTrigger { WinSound, LoseSound, MenuSceneChange }
+	public enum SoundTrigger { WinSound, LoseSound, MenuSceneChange, LowBatteryWarning }
 
 
 
@@ -87,6 +93,7 @@ public class Sound : MonoBehaviour
 		if (Music.instance == null)
 		{
 			instance = this;
+			//Set destroy on load to false;
 		}
 		else
 		{

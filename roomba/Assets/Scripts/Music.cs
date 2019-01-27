@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Music : MonoBehaviour
+
+public interface iMusic
 {
-	public static Music instance;
+	void SceneChange(Music.SceneTypeList, string );
+}
+
+public class Music : MonoBehaviour, iMusic
+{
+	public static iMusic instance;
 	public enum SceneTypeList { Menu, Game, CutScene }
 
 	[SerializeField]
@@ -20,6 +26,7 @@ public class Music : MonoBehaviour
 		if(Music.instance == null)
 		{
 			instance = this;
+			//Set destroy on load to false;
 		}
 		else
 		{
