@@ -154,7 +154,7 @@ public class LevelManager : MonoBehaviour
 		CurrentRoom++;
 		return ThisisMe.LoadRoomNo(CurrentRoom);
 	}
-	private static void Load(string scene)
+	public static void Load(string scene)
 	{
 		if(OtherScenes.Contains(scene))
 		{
