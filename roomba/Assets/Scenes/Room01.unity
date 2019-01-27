@@ -721,7 +721,7 @@ PrefabInstance:
         type: 3}
       propertyPath: RedAlert
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 2c77c867c79c84ae2a5460fa41eea068, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19fe69c6e70d4eb4aa23d44fc7a39d96, type: 3}
 --- !u!224 &1237105085 stripped
