@@ -44,6 +44,7 @@ public class Pot : MonoBehaviour
     }
 	private void KnockOver()
 	{
+		MyAnimation.SetTrigger("HitRight");
 		knocked = true;
 		myDirt.active = true;
 		myDirt.transform.parent = null;
