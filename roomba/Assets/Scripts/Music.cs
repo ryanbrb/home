@@ -20,8 +20,9 @@ public class Music : MonoBehaviour, iMusic
 
 
 
-	void Start()
+	void Awake()
 	{
+
 		//Singleton
 		if(Music.instance == null)
 		{
@@ -40,7 +41,32 @@ public class Music : MonoBehaviour, iMusic
 	/// ---- It is Mike's responsibility for this to work, it is everyone else's responsibility to call these!
 	public void SceneChange(SceneTypeList sceneType, string NameOfScene )
 	{
-		
-	}
+        if(sceneType == SceneTypeList.Menu)
+        {
+            source.clip = mySongs[0];
+            source.Play();
+        
+        } else if(sceneType == SceneTypeList.Game)
+        {
+            source.clip = mySongs[1];
+            source.Play();
+
+        } else if(sceneType == SceneTypeList.CutScene)
+        {
+            if (NameOfScene == "Cutscene1")
+            {
+                source.clip = mySongs[2];
+                source.Play();
+
+            } else if (NameOfScene == "Cutscene2")
+            {
+                source.clip = mySongs[3];
+                    source.Play();
+            }
+
+
+        }
+
+    }
 
 }
