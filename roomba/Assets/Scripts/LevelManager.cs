@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public class GameTag {
+	public const string Roomba = "Roomba";
+	public const string Home = "Goal";
+	public const string Cat = "Cat";
+	public const string Wall = "Wall";
+	public const string Pot = "Pot";
+	public const string Dirt = "Dirt";
+}
 
 public enum GameEvent {
 BatteryDead, Warning, NextLevel, reset
