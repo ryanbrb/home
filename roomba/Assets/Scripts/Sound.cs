@@ -106,7 +106,7 @@ public class Sound : MonoBehaviour, iSound
 		{
 			instance = this;
 			//Set destroy on load to false;
-			DontDestroyOnLoad(this.gameObject);
+			//DontDestroyOnLoad(this.gameObject);
 		}
 		else
 		{

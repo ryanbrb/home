@@ -19,11 +19,11 @@ BatteryDead, Warning, NextLevel, reset
 
 public class LevelManager : MonoBehaviour
 {
-	private static string[] Level = {"Nothing!", "Room01", "Room02"};
-	private static string[] LevelNames = { "Nothing!", "Byu Billy", "Cat's Meow" };
+	private static string[] Level = {"Nothing!", "Room01",  "Room02",   "Room03",   "Room04",   "Room05",   "Room06",   "Room07",   "Room08",   "Room09" };
+	private static string[] LevelNames = { "Nothing!", "Room01",    "Room02",   "Room03",   "Room04",   "Room05",   "Room06",   "Room07",   "Room08",   "Room09"};
 	private static List<string> OtherScenes = new List<string>(new string[] {"main", "credits", "Lose", "Win"});
 
-	
+	[SerializeField]
 	private  static int CurrentRoom = 0;
 	private static LevelManager ThisisMe;
 
@@ -166,7 +166,7 @@ public class LevelManager : MonoBehaviour
 	// These are all the Scene control public funcations
 	public void LoadRoom(int RoomNumber)
 	{
-		ThisisMe.soundTrigger = Sound.SoundTrigger.MenuSceneChange;
+		soundTrigger = Sound.SoundTrigger.MenuSceneChange;
 		ResetCounter = 0;
 		LoadRoomNo(RoomNumber);
 	}
@@ -195,7 +195,9 @@ public class LevelManager : MonoBehaviour
 	private void ReadyAndCallToLoad(string scene)
 	{
 		SceneToLoad = scene;
-		Sound.instance.MakeSound(soundTrigger, FinishSoundPlay);
+
+		FinishSoundPlay();
+		//Sound.instance.MakeSound(soundTrigger, FinishSoundPlay);
 		
 	}
 	
