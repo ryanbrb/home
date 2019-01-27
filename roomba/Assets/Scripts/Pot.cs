@@ -11,17 +11,20 @@ public class Pot : MonoBehaviour
 	private SpriteRenderer sr;
 	[SerializeField]
 	private GameObject myDirt;
+	public Dirt dirt { get; private set; }
 
-    //Declaring Audio Objects
-    private AudioSource PotSounds;
+	//Declaring Audio Objects
+	private AudioSource PotSounds;
     public AudioClip PotHit;
     public AudioClip PotCrash;
 
     private void Start()
 	{
-		myDirt.active = false;
+		dirt = myDirt.GetComponent<Dirt>();
+		myDirt.SetActive(false);
 		StartColor = sr.color;
         PotSounds = GetComponent<AudioSource>();
+		
 
 	}
 	// Update is called once per frame
@@ -48,7 +51,7 @@ public class Pot : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		Debug.Log("Collider Entered for pot");
-		if (collision.gameObject.CompareTag("Cat") && !knocked)
+		if ((collision.gameObject.CompareTag(GameTag.Cat) || collision.gameObject.CompareTag(GameTag.Roomba)) && !knocked)
 		{
             PotSounds.PlayOneShot(PotHit);
             KnockOver();
@@ -57,7 +60,7 @@ public class Pot : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		Debug.Log("Trigger Entered for pot");
-		if (collision.gameObject.CompareTag("Cat"))
+		if (collision.gameObject.CompareTag(GameTag.Cat))
 		{
 			KnockOver();
 		}

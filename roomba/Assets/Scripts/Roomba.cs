@@ -98,7 +98,7 @@ public class Roomba : MonoBehaviour{
 		switch (collision.gameObject.tag) {
 			case GameTag.Pot:
 				//Break the pot. the dirt created from it is first priority. drops the original target
-				//coll.isTrigger = true;
+				target = collision.transform.GetComponent<Pot>().dirt.transform;
 				break;
 			case GameTag.Cat:
 				//Scan the entire premise
