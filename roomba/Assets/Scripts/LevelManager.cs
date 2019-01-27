@@ -178,6 +178,10 @@ public class LevelManager : MonoBehaviour
 			Load("main");
 		}
 	}
+	public void LoadScene(string scene)
+	{
+		LevelManager.Load(scene);
+	}
 
 	public void QuitGame()
 	{
