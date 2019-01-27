@@ -4,6 +4,8 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: Catwalk left-Untitled_0
     21300002: Catwalk left-Untitled_1
+    21300004: Catwalk left-Untitled_2
+    21300006: Catwalk left-Untitled_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -111,7 +113,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 949bb32c5cd8c394492daab3a4c2f111
+      spriteID: d21fc878692942a4cb86861e9054866d
       vertices: []
       indices: 
       edges: []
@@ -131,7 +133,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a28c50be24cb40489fe1d90d42bd5e2
+      spriteID: c773b61a8cf77db45b4b5e4636db082c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catwalk left-Untitled_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 761766ba5ee312b40820db13d0a3b62e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catwalk left-Untitled_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9a5e77fc708f8e41b7cdae2f2da566f
       vertices: []
       indices: 
       edges: []

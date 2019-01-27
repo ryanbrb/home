@@ -21,7 +21,8 @@ public class Roomba : MonoBehaviour{
     private float RoombaSoundVolume;
     public AudioClip RoombaMove;
     public AudioClip RoombaClean;
-    public AudioClip[] WallHitArray;
+	public AudioClip RoombaCleanLoud;
+	public AudioClip[] WallHitArray;
     private AudioClip WallHit;
 
 
@@ -42,7 +43,11 @@ public class Roomba : MonoBehaviour{
         }
     }
 
-    private void FixedUpdate() {
+	private float PauseTime = 0;
+
+
+    private void FixedUpdate() 
+	{
         //rig.MovePosition(rig.position + )
         if(target == objective || target == trans) {
             Scan(target == trans);
@@ -53,7 +58,13 @@ public class Roomba : MonoBehaviour{
             }
 
         }
-		rig.velocity = (target.transform.position - trans.position).normalized;
+		if (PauseTime < 0)
+			rig.velocity = (target.transform.position - trans.position).normalized;
+		else
+		{
+			rig.velocity = Vector2.zero;
+			PauseTime = PauseTime - Time.deltaTime;
+		}
 		//rig.MovePosition(rig.position + velocity * Time.fixedDeltaTime);
 		//rig.position = Vector2.MoveTowards(rig.position, target.transform.position, Time.fixedDeltaTime);
 		//Debug.Log(rig.velocity);
@@ -107,6 +118,7 @@ public class Roomba : MonoBehaviour{
         return 3;
 
     }
+	public float HowLongToPause = 3;
 
     private void OnCollisionEnter2D(Collision2D collision) {
         //Debug.LogFormat("Collision: {0}", collision.gameObject.tag);
@@ -116,8 +128,9 @@ public class Roomba : MonoBehaviour{
 				target = collision.transform.GetComponent<Pot>().dirt.transform;
 				break;
             case GameTag.Cat:
-                //Scan the entire premise
-                Scan();
+				//Scan the entire premise
+				//collision.gameObject.GetComponent<Cat>()
+				Scan();
                 break;
             case GameTag.Wall:
                 //Stops. Rescans until dirt is detected.
@@ -138,7 +151,12 @@ public class Roomba : MonoBehaviour{
                 if (BoundsContainedPercentage(collider.bounds, coll.bounds) > 0.999f) {
                     Debug.Log("Destroy dirt");
                     collider.gameObject.SetActive(false);
-                    Scan();
+					// make Roomba loud
+					RoombaHits.clip = RoombaCleanLoud;
+					RoombaHits.Play();
+
+					PauseTime = HowLongToPause;
+					Scan();
                 }
                 break;
             case GameTag.Pot:

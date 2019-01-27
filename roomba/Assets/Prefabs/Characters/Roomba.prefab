@@ -144,7 +144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoombaMove: {fileID: 0}
   RoombaClean: {fileID: 0}
+  RoombaCleanLoud: {fileID: 8300000, guid: 900b05a7a8cea37488ec81d8812d3a23, type: 3}
   WallHitArray: []
+  HowLongToPause: 3
 --- !u!50 &3253775387893278294
 Rigidbody2D:
   serializedVersion: 4
