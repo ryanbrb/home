@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         menuMove = true;
+        menu += MoveSelection;
         currentScene = SceneManager.GetActiveScene();
         screenName = currentScene.name;
 
@@ -44,20 +45,27 @@ public class UIManager : MonoBehaviour
         {
             if(Input.GetAxis("Vertical") > 0 && menuMove)
             {
-                menu = MoveSelection;
+                //menu = MoveSelection;
                 menu("up");
                 menuMove = false;
             }
             else if (Input.GetAxis("Vertical") < 0 && menuMove)
             {
-                menu = MoveSelection;
+                //menu = MoveSelection;
                 menu("down");
                 menuMove = false;
             }
-            else if (Input.GetAxis("Fire1") > 0) {
-                menu = MoveSelection;
+            else if (Input.GetAxis("Fire1") > 0)
+            {
+                //menu = MoveSelection;
+                Debug.Log("Fire1 detected");
                 menu("select");
             }
+            else if (Input.GetAxis("Vertical") == 0)
+            {
+                menuMove = true;
+            }
+
         }
         else
         {
@@ -65,7 +73,6 @@ public class UIManager : MonoBehaviour
             movement = MoveDiagonal;
             MoveDiagonal(v3);
         }
-
 
     }
 
@@ -76,11 +83,10 @@ public class UIManager : MonoBehaviour
 
     void MoveSelection(string action)
     {
-        menuMove = true;
+        //menuMove = true;
         titleScreen.HandleSelection(action);
+        Debug.LogFormat("menumove: {0}", menuMove);
     }
-
-
 
 
 }

@@ -31,7 +31,7 @@ public class UITitleScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        currentButton.Select();
     }
 
     public void HandleSelection(string action)
@@ -43,7 +43,7 @@ public class UITitleScreen : MonoBehaviour
             {
                 currentButton = buttons[buttonIndex - 1];
                 buttonIndex -= 1;
-                currentButton.Select();
+                //currentButton.Select();
             }
             catch (Exception e)
             {
@@ -57,7 +57,7 @@ public class UITitleScreen : MonoBehaviour
             {
                 currentButton = buttons[buttonIndex + 1];
                 buttonIndex += 1;
-                currentButton.Select();
+                //currentButton.Select();
             }
             catch (Exception)
             {
@@ -66,7 +66,9 @@ public class UITitleScreen : MonoBehaviour
         }
         else if (action == "select")
         {
+            Debug.Log("Click the button");
             currentButton.onClick.Invoke();
         }
+        Debug.Log(currentButton);
     }
 }
