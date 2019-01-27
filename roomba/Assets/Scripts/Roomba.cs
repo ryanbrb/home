@@ -15,13 +15,21 @@ public class Roomba : MonoBehaviour{
 	//Object the roomba is moving toward
 	private Transform target;
 
-	
+    //Declaring audio objects
+    private AudioSource RoombaSounds;
+    private float RoombaSoundVolume;
+    public AudioClip RoombaMove;
+    public AudioClip RoombaClean;
+
+
 
     void Start(){
 		rig = GetComponent<Rigidbody2D>();
 		trans = transform;
 		coll = GetComponent<CircleCollider2D>();
 		var goal = GameObject.FindWithTag(GameTag.Home);
+        RoombaSounds = GetComponent<AudioSource>();
+        RoombaSoundVolume = GetComponent<AudioSource>().volume;
 		if(goal != null) {
 			objective = goal.transform;
 			target = objective;
@@ -32,6 +40,7 @@ public class Roomba : MonoBehaviour{
 		//rig.MovePosition(rig.position + )
 		if(target == objective || target == trans) {
 			Scan(target == trans);
+
 		}
 		rig.position = Vector2.MoveTowards(rig.position, target.transform.position, Time.fixedDeltaTime);
 	}
