@@ -135,7 +135,7 @@ public class BatteryUI : MonoBehaviour
         BatteryTimer += Time.deltaTime;
 
         // Converts BatteryTimer to countdown. Maximum time is the denominator of BatteryTimer
-        BatteryLife = 1 - (BatteryTimer / 2);
+        BatteryLife = 1 - (BatteryTimer / 60);
 
     }
 }
