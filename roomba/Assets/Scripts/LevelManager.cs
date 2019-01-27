@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour
 
 	private static int ResetCounter = 0;
 	public SpriteRenderer[] Hints;
-	public UnityEngine.UI.Button b;
+
 	public void Start()
 	{
 		LevelManager.ThisisMe = this;
@@ -177,5 +177,10 @@ public class LevelManager : MonoBehaviour
 			Debug.Log("Scene \"" + scene + "\" does not exist, or is not in the Level Manager as an optional other scene. defaulting to Menu.");
 			Load("main");
 		}
+	}
+
+	public void QuitGame()
+	{
+		Application.Quit();
 	}
 }
