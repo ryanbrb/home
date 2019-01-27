@@ -16,7 +16,8 @@ public class Roomba : MonoBehaviour{
     private Transform target;
 
     //Declaring audio objects
-    private AudioSource RoombaSounds;
+    private AudioSource RoombaHits;
+    private AudioSource RoombaVacuum;
     private float RoombaSoundVolume;
     public AudioClip RoombaMove;
     public AudioClip RoombaClean;
@@ -31,7 +32,8 @@ public class Roomba : MonoBehaviour{
         trans = transform;
         coll = GetComponent<CircleCollider2D>();
         var goal = GameObject.FindWithTag(GameTag.Home);
-        RoombaSounds = GetComponent<AudioSource>();
+        RoombaHits = GetComponent<AudioSource>();
+        RoombaVacuum = GetComponent<AudioSource>();
         RoombaSoundVolume = GetComponent<AudioSource>().volume;
 
         if(goal != null) {
@@ -44,6 +46,11 @@ public class Roomba : MonoBehaviour{
         //rig.MovePosition(rig.position + )
         if(target == objective || target == trans) {
             Scan(target == trans);
+            if (!RoombaVacuum.isPlaying)
+            {
+                RoombaVacuum.clip = RoombaMove;
+                RoombaVacuum.Play();
+            }
 
         }
 		rig.velocity = (target.transform.position - trans.position).normalized;
@@ -114,8 +121,8 @@ public class Roomba : MonoBehaviour{
                 break;
             case GameTag.Wall:
                 //Stops. Rescans until dirt is detected.
-                RoombaSounds.clip = WallHitArray[Random.Range(0, WallHitArray.Length)];
-                RoombaSounds.PlayOneShot(RoombaSounds.clip);
+                RoombaHits.clip = WallHitArray[Random.Range(0, WallHitArray.Length)];
+                RoombaHits.PlayOneShot(RoombaHits.clip);
                 Scan(true);
                 break;
             default:

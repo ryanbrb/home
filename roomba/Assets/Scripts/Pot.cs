@@ -39,7 +39,7 @@ public class Pot : MonoBehaviour
 			{
 				gameObject.GetComponent<Collider2D>().enabled = false;
 				Destroy(this.gameObject);
-			}
+            }
 		}
     }
 	private void KnockOver()
