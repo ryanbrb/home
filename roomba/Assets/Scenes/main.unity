@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 220939506}
   - component: {fileID: 220939505}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,15 +191,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1037270233}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1715470218}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: credits
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -241,6 +241,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220939503}
   m_CullTransparentMesh: 0
+--- !u!114 &562448850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2914289107458154300, guid: a5141c7d855c9ee4abcc1ddbafb3dfcd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2020038028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &664749723
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,12 +483,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27c0b0571896149cc9c14825eb8521ef, type: 3}
---- !u!1 &1037270233 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2123604700124271147, guid: 2fead439cd603024c9cbf08f096b571b,
+--- !u!114 &1448158357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8019285333652798919, guid: a5141c7d855c9ee4abcc1ddbafb3dfcd,
     type: 3}
-  m_PrefabInstance: {fileID: 2123604700277829459}
+  m_PrefabInstance: {fileID: 2020038028}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1544546942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -627,7 +645,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2123604700277829459}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1037270233}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a1095b80f30f3e48bc89164ea090a19, type: 3}
@@ -879,6 +897,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1632383536464238155, guid: a5141c7d855c9ee4abcc1ddbafb3dfcd,
+        type: 3}
+      propertyPath: m_Name
+      value: Start
+      objectReference: {fileID: 0}
     - target: {fileID: 2914289107458154300, guid: a5141c7d855c9ee4abcc1ddbafb3dfcd,
         type: 3}
       propertyPath: m_Transition
@@ -909,10 +932,35 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 4612843439232107385, guid: a5141c7d855c9ee4abcc1ddbafb3dfcd,
+        type: 3}
+      propertyPath: buttons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612843439232107385, guid: a5141c7d855c9ee4abcc1ddbafb3dfcd,
+        type: 3}
+      propertyPath: buttons.Array.data[0]
+      value: 
+      objectReference: {fileID: 562448850}
+    - target: {fileID: 4612843439232107385, guid: a5141c7d855c9ee4abcc1ddbafb3dfcd,
+        type: 3}
+      propertyPath: buttons.Array.data[1]
+      value: 
+      objectReference: {fileID: 220939505}
+    - target: {fileID: 4612843439232107385, guid: a5141c7d855c9ee4abcc1ddbafb3dfcd,
+        type: 3}
+      propertyPath: buttons.Array.data[2]
+      value: 
+      objectReference: {fileID: 1448158357}
     - target: {fileID: 83702009635906170, guid: a5141c7d855c9ee4abcc1ddbafb3dfcd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -79
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945652520363716789, guid: a5141c7d855c9ee4abcc1ddbafb3dfcd,
+        type: 3}
+      propertyPath: m_Name
+      value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 8019285333652798919, guid: a5141c7d855c9ee4abcc1ddbafb3dfcd,
         type: 3}
