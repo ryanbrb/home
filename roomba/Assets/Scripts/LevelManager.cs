@@ -20,6 +20,7 @@ BatteryDead, Warning, NextLevel, reset
 public class LevelManager : MonoBehaviour
 {
 	private static string[] Level = {"Nothing!", "Room01", "Room02"};
+	private static string[] LevelNames = { "Nothing!", "Byu Billy", "Cat's Meow" };
 	private static List<string> OtherScenes = new List<string>(new string[] {"main", "credits", "Lose", "Win"});
 
 	
@@ -34,12 +35,43 @@ public class LevelManager : MonoBehaviour
 		LevelManager.ThisisMe = this;
 		if (ResetCounter >= 3)
 		{
-			foreach(SpriteRenderer go in Hints)
+			Hint LastHint = null;
+			foreach(SpriteRenderer sr in Hints)
 			{
-				go.gameObject.AddComponent<Hint>();
+				if (sr != null)
+				{
+
+					Hint thisHint; // = new Hint();
+					sr.gameObject.AddComponent<Hint>();
+					thisHint = sr.gameObject.GetComponent<Hint>();
+					thisHint.ActivatedHint = false;
+					thisHint.NextHint = LastHint;
+					LastHint = thisHint;
+				}
 			}
+			LastHint.ActivatedHint = true;
 		}
 
+		GameObject go = GameObject.Find("TextLevelNumber");
+		if (go != null)
+		{
+			string LevelNum;
+			if (CurrentRoom < 10)
+			{
+				LevelNum = "0" + CurrentRoom;
+			}
+			else
+			{
+				LevelNum = CurrentRoom + "";
+			}
+			go.GetComponent<UnityEngine.UI.Text>().text = LevelNum;
+		}
+		go = GameObject.Find("TextLevelName");
+		if (go != null)
+		{
+			go.GetComponent<UnityEngine.UI.Text>().text = LevelNames[CurrentRoom];
+		}
+		//TextLevelName
 
 	}
 	public static void CallEvent(GameEvent EventCalled)
