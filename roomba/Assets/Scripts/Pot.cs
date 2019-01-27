@@ -12,10 +12,17 @@ public class Pot : MonoBehaviour
 	[SerializeField]
 	private GameObject myDirt;
 
-	private void Start()
+    //Declaring Audio Objects
+    private AudioSource PotSounds;
+    public AudioClip PotHit;
+    public AudioClip PotCrash;
+
+    private void Start()
 	{
 		myDirt.active = false;
 		StartColor = sr.color;
+        PotSounds = GetComponent<AudioSource>();
+
 	}
 	// Update is called once per frame
 	void Update()
@@ -43,7 +50,8 @@ public class Pot : MonoBehaviour
 		Debug.Log("Collider Entered for pot");
 		if (collision.gameObject.CompareTag("Cat") && !knocked)
 		{
-			KnockOver();
+            PotSounds.PlayOneShot(PotHit);
+            KnockOver();
 		}
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
