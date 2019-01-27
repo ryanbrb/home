@@ -45,6 +45,9 @@ public class Sound : MonoBehaviour, iSound
 	/// <param name="myDeligate">What happens after. (Can be null)</param>
 	public void MakeSound(SoundTrigger trigger, AfterSound myDeligate)
 	{
+		myDeligate();
+		return;
+
 		float lengthOfSound = 0;
 		callWhenDone = myDeligate;
 		AudioClip ClipToPlay = null;
@@ -103,6 +106,7 @@ public class Sound : MonoBehaviour, iSound
 		{
 			instance = this;
 			//Set destroy on load to false;
+			DontDestroyOnLoad(this.gameObject);
 		}
 		else
 		{

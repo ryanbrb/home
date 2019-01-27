@@ -27,6 +27,7 @@ public class Music : MonoBehaviour, iMusic
 		if(Music.instance == null)
 		{
 			instance = this;
+			DontDestroyOnLoad(this.gameObject);
 			//Set destroy on load to false;
 		}
 		else
