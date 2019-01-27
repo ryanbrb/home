@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 
 public enum GameEvent {
-BatteryDead, Warning, NextLevel
+BatteryDead, Warning, NextLevel, reset
 }
 
 
@@ -14,41 +14,79 @@ public class LevelManager : MonoBehaviour
 	private static string[] Level = {"Nothing!", "Room01", "Room02"};
 	private static List<string> OtherScenes = new List<string>(new string[] {"main", "credits", "Lose", "Win"});
 
+	
 	private  static int CurrentRoom = 0;
 	private static LevelManager ThisisMe;
+
+	private static int ResetCounter = 0;
+	public SpriteRenderer[] Hints;
+	public UnityEngine.UI.Button b;
 	public void Start()
 	{
 		LevelManager.ThisisMe = this;
-		
+		if (ResetCounter >= 3)
+		{
+			foreach(SpriteRenderer go in Hints)
+			{
+				go.gameObject.AddComponent<Hint>();
+			}
+		}
+
+
 	}
 	public static void CallEvent(GameEvent EventCalled)
 	{
 		switch (EventCalled)		
 		{
 			case GameEvent.NextLevel:
-				if (LoadNextLevel())
-					return;
-				else
-					Load("main");
+				ThisisMe.Invoke("Win", 3);
+				//ThisisMe.Win();
 				break;
 			case GameEvent.BatteryDead:
-				Load("main");
+				ThisisMe.Invoke("Lose", 3);
+				
 				return;
 				break;
 			case GameEvent.Warning:
 				ThisisMe.Warning();
 				break;
-				
+			case GameEvent.reset:
+				ThisisMe.ResetLevel();
+				break;
+
 		}
 	}
 
 	private void Warning()
 	{
-		Debug.Log("Warnign");
+		Debug.Log("Warning");
 	}
+
+	private void Win()
+	{
+		ResetCounter = 0;
+		if (LoadNextLevel())
+			return;
+		else
+			Load("main");
+	}
+	
+	private void Lose()
+	{
+		ResetLevel();
+		//Load("main");
+	}
+
+	private void ResetLevel()
+	{
+		ResetCounter++;
+		LoadRoomNo(CurrentRoom);
+	}
+
 
 	public void LoadRoom(int RoomNumber)
 	{
+		ResetCounter = 0;
 		LoadRoomNo(RoomNumber);
 	}
 	private bool LoadRoomNo(int RoomNumber)
