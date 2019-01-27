@@ -41,7 +41,7 @@ public class Pot : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		Debug.Log("Collider Entered for pot");
-		if (collision.gameObject.CompareTag("Cat"))
+		if (collision.gameObject.CompareTag("Cat") && !knocked)
 		{
 			KnockOver();
 		}
