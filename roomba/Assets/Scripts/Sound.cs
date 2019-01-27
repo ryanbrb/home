@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface iSound
 {
-	void MakeSound(Sound.SoundTrigger, Sound.AfterSound);
+	void MakeSound(Sound.SoundTrigger trigger, Sound.AfterSound myDeligate);
 }
 
 

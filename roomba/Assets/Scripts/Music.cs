@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface iMusic
 {
-	void SceneChange(Music.SceneTypeList, string );
+	void SceneChange(Music.SceneTypeList sceneType, string NameOfScene);
 }
 
 public class Music : MonoBehaviour, iMusic
