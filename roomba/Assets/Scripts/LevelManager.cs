@@ -74,17 +74,18 @@ public class LevelManager : MonoBehaviour
 		//TextLevelName
 
 	}
+	
+	//These are the public functions for different sounds.
 	public static void CallEvent(GameEvent EventCalled)
 	{
 		switch (EventCalled)		
 		{
 			case GameEvent.NextLevel:
-				ThisisMe.Invoke("Win", 3);
-				//ThisisMe.Win();
+				ThisisMe.Win();
 				break;
 			case GameEvent.BatteryDead:
-				ThisisMe.Invoke("Lose", 3);
-				
+				ThisisMe.Lose();
+				//ThisisMe.Invoke("Lose", 3);
 				return;
 				break;
 			case GameEvent.Warning:
@@ -93,41 +94,38 @@ public class LevelManager : MonoBehaviour
 			case GameEvent.reset:
 				ThisisMe.ResetLevel();
 				break;
-
 		}
 	}
+	
+
+
+
 
 	private void Warning()
 	{
-		//Debug.Log("Warning");
+		//soundTrigger = Sound.SoundTrigger.LowBatteryWarning;
+		Sound.instance.MakeSound(Sound.SoundTrigger.LowBatteryWarning, null);
+		Debug.Log("Warning");
 	}
-
 	private void Win()
 	{
+		soundTrigger = Sound.SoundTrigger.WinSound;
 		ResetCounter = 0;
 		if (LoadNextLevel())
 			return;
 		else
 			Load("main");
 	}
-	
 	private void Lose()
 	{
+		ThisisMe.soundTrigger = Sound.SoundTrigger.LoseSound;
 		ResetLevel();
 		//Load("main");
 	}
-
 	private void ResetLevel()
 	{
 		ResetCounter++;
 		LoadRoomNo(CurrentRoom);
-	}
-
-
-	public void LoadRoom(int RoomNumber)
-	{
-		ResetCounter = 0;
-		LoadRoomNo(RoomNumber);
 	}
 	private bool LoadRoomNo(int RoomNumber)
 	{
@@ -136,7 +134,17 @@ public class LevelManager : MonoBehaviour
 			if (Level[RoomNumber] != null)
 			{
 				CurrentRoom = RoomNumber;
-				SceneManager.LoadScene(Level[RoomNumber]);
+
+				if(Level[RoomNumber].Substring(0,4).Equals("Room"))
+				{
+					SceneType = Music.SceneTypeList.Game;
+				}
+				else
+				{
+					SceneType = Music.SceneTypeList.CutScene;
+				}
+				ReadyAndCallToLoad(Level[RoomNumber]); //SceneManager.LoadScene(scene);
+
 				Debug.Log("Loading " + Level[RoomNumber]);
 				return true;
 			}
@@ -154,30 +162,41 @@ public class LevelManager : MonoBehaviour
 		CurrentRoom++;
 		return ThisisMe.LoadRoomNo(CurrentRoom);
 	}
+
+	// These are all the Scene control public funcations
+	public void LoadRoom(int RoomNumber)
+	{
+		ThisisMe.soundTrigger = Sound.SoundTrigger.MenuSceneChange;
+		ResetCounter = 0;
+		LoadRoomNo(RoomNumber);
+	}
 	public static void Load(string scene)
 	{
-		if(OtherScenes.Contains(scene))
+		if (OtherScenes.Contains(scene))
 		{
-				SceneManager.LoadScene(scene);
-				Debug.Log("Loading " + scene);
-			/*
-				Debug.Log("Scene \"" + scene + "\" does not exist, or is not in the Level Manager as an optional other scene.");// defaulting to Menu.");
-				if (scene != "main")
-				{
-					Debug.Log("defaulting to Menu.");
-					Load("main");
-				}
-
-			}
-			*/
+			ThisisMe.ReadyAndCallToLoad(scene); //SceneManager.LoadScene(scene);
+			Debug.Log("Loading " + scene);
 		}
 		else
 		{
-			
+
 			Debug.Log("Scene \"" + scene + "\" does not exist, or is not in the Level Manager as an optional other scene. defaulting to Menu.");
 			Load("main");
 		}
 	}
+
+
+	public string SceneToLoad;
+	private Sound.SoundTrigger soundTrigger;
+	private Music.SceneTypeList SceneType;
+	private void ReadyAndCallToLoad(string scene)
+	{
+		SceneToLoad = scene;
+		Sound.instance.MakeSound(soundTrigger, FinishSoundPlay);
+		
+	}
+	
+
 	public void LoadScene(string scene)
 	{
 		LevelManager.Load(scene);
@@ -185,6 +204,18 @@ public class LevelManager : MonoBehaviour
 
 	public void QuitGame()
 	{
+		Sound.instance.MakeSound(Sound.SoundTrigger.MenuSceneChange, null);
 		Application.Quit();
 	}
+
+
+
+
+	public void FinishSoundPlay()
+	{
+		Music.instance.SceneChange(SceneType, SceneToLoad);
+		//Loads the next scene.
+		SceneManager.LoadScene(SceneToLoad);
+	}
+
 }
