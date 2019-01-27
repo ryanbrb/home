@@ -73,14 +73,23 @@ public class Sound : MonoBehaviour, iSound
 		audioSources[nextSoundSource].clip = ClipToPlay;
 		audioSources[nextSoundSource].Play();
 		nextSoundSource++;
-		Invoke("OnFinishSound", ClipToPlay.length);
+		//Invoke("OnFinishSound", ClipToPlay.length);
+
+		StartCoroutine(WaitWhileRunningSound(ClipToPlay.length));
 	}
 
-	/// This is called when the sound is done. if nothing is there we can 
+	/*/// This is called when the sound is done. if nothing is there we can 
 	public void OnFinishSound()
 	{
 		if(callWhenDone != null)
 		{
+			callWhenDone();
+		}
+	}*/
+
+	private IEnumerator WaitWhileRunningSound(float clipLength) {
+		yield return new WaitForSeconds(clipLength);
+		if(callWhenDone != null) {
 			callWhenDone();
 		}
 	}

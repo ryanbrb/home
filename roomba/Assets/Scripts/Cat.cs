@@ -16,12 +16,6 @@ public class Cat : MonoBehaviour
 		myScale.x = myScale.x * -1;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void MoveDiagonal(Vector3 v3)
     {
 		if(v3.x > 0)
