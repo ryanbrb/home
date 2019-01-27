@@ -67,7 +67,7 @@ public class LevelManager : MonoBehaviour
 
 	private void Warning()
 	{
-		Debug.Log("Warning");
+		//Debug.Log("Warning");
 	}
 
 	private void Win()

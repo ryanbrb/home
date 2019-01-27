@@ -7,6 +7,7 @@ public class Roomba : MonoBehaviour{
 
 	private Transform trans;
 	private Rigidbody2D rig;
+	private CircleCollider2D coll;
 
 	//Transform of the goal
 	private Transform objective;
@@ -19,6 +20,7 @@ public class Roomba : MonoBehaviour{
     void Start(){
 		rig = GetComponent<Rigidbody2D>();
 		trans = transform;
+		coll = GetComponent<CircleCollider2D>();
 		var goal = GameObject.FindWithTag(GameTag.Home);
 		if(goal != null) {
 			objective = goal.transform;
@@ -43,7 +45,7 @@ public class Roomba : MonoBehaviour{
 	private int Scan(bool haltIfScanFails = false) {
 		var dirts = GameObject.FindGameObjectsWithTag(GameTag.Dirt);
 		bool directHomeSight = true;
-		var rhObstacle = Physics2D.LinecastAll(trans.position, objective.position);
+		var rhObstacle = Physics2D.CircleCastAll(trans.position, coll.radius, objective.position - trans.position, Vector2.Distance(trans.position, objective.position));
 		foreach(var i in rhObstacle) {
 			if (i.transform.CompareTag(GameTag.Wall)) {
 				directHomeSight = false;
@@ -56,7 +58,7 @@ public class Roomba : MonoBehaviour{
 
 			for (int i = 0; i < dirts.Length; ++i) {
 				bool hasSight = true;
-				var obstacles = Physics2D.LinecastAll(trans.position, dirts[i].transform.position);
+				var obstacles = Physics2D.CircleCastAll(trans.position, coll.radius, dirts[i].transform.position - trans.position, Vector2.Distance(trans.position, dirts[i].transform.position));
 				foreach (var j in obstacles) {
 					if (j.transform.CompareTag(GameTag.Cat) || j.transform.CompareTag(GameTag.Wall)) {
 						hasSight = false;
@@ -83,14 +85,39 @@ public class Roomba : MonoBehaviour{
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision) {
+		//Debug.LogFormat("Collision: {0}", collision.gameObject.tag);
 		switch (collision.gameObject.tag) {
+			case GameTag.Pot:
+				//Break the pot. the dirt created from it is first priority. drops the original target
+				//coll.isTrigger = true;
+				break;
+			case GameTag.Cat:
+				//Scan the entire premise
+				Scan();
+				break;
+			case GameTag.Wall:
+				//Stops. Rescans until dirt is detected.
+				Scan(true);
+				break;
+			default:
+				break;
+		}
+	}
+
+	private void OnTriggerStay2D(Collider2D collider) {
+		switch (collider.tag) {
 			case GameTag.Dirt:
 				//Clean it up. Rescan.
-				Scan();
+				//Debug.LogFormat("Colliding dirt: {0}", BoundsContainedPercentage(collider.bounds, coll.bounds));
+				if (BoundsContainedPercentage(collider.bounds, coll.bounds) > 0.999f) {
+					Debug.Log("Destroy dirt");
+					collider.gameObject.SetActive(false);
+					Scan();
+				}
 				break;
 			case GameTag.Pot:
 				//Break the pot. the dirt created from it is first priority. drops the original target
-				
+
 				break;
 			case GameTag.Cat:
 				//Scan the entire premise
@@ -101,12 +128,19 @@ public class Roomba : MonoBehaviour{
 				Debug.Log("Reached home");
 				LevelManager.CallEvent(GameEvent.NextLevel);
 				break;
-			case GameTag.Wall:
-				//Stops. Rescans until dirt is detected.
-				Scan(true);
-				break;
 			default:
 				break;
 		}
+	}
+
+	public static float BoundsContainedPercentage(Bounds obj, Bounds region) {
+		var total = 1f;
+		for (var i = 0; i < 2; i++) {
+			var dist = obj.min[i] > region.center[i] ?
+				obj.max[i] - region.max[i] :
+				region.min[i] - obj.min[i];
+			total *= Mathf.Clamp01(1f - dist / obj.size[i]);
+		}
+		return total;
 	}
 }
