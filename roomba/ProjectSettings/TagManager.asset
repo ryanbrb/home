@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Goal
   - Roomba
+  - Wall
+  - Pot
+  - Dirt
+  - Cat
   layers:
   - Default
   - TransparentFX

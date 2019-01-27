@@ -99,6 +99,7 @@ public class Roomba : MonoBehaviour{
 			case GameTag.Home:
 				//Fire a event to level manager that roomba reached the goal
 				Debug.Log("Reached home");
+				LevelManager.CallEvent(GameEvent.NextLevel);
 				break;
 			case GameTag.Wall:
 				//Stops. Rescans until dirt is detected.
