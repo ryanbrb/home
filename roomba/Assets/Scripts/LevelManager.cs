@@ -87,7 +87,7 @@ public class LevelManager : MonoBehaviour
 				ThisisMe.Lose();
 				//ThisisMe.Invoke("Lose", 3);
 				return;
-				break;
+				//break;
 			case GameEvent.Warning:
 				ThisisMe.Warning();
 				break;
@@ -104,8 +104,8 @@ public class LevelManager : MonoBehaviour
 	private void Warning()
 	{
 		//soundTrigger = Sound.SoundTrigger.LowBatteryWarning;
-		Sound.instance.MakeSound(Sound.SoundTrigger.LowBatteryWarning, null);
-		Debug.Log("Warning");
+		//Sound.instance.MakeSound(Sound.SoundTrigger.LowBatteryWarning, null);
+		//Debug.Log("Warning");
 	}
 	private void Win()
 	{
