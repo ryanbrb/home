@@ -11,13 +11,36 @@ public class BatteryUI : MonoBehaviour
     public Color myRed;
     public Slider BatteryPower; 
     public static float countdown = 0.5f;
-    public static Color BatteryColor;
+    private static Color _BatteryColor;
+    public static Color BatteryColor
+    {
+        get { return _BatteryColor; }
+        set
+        {
+            if(_BatteryColor != value)
+            {
+                if(value == Yellow)
+                {
+                    Instance.WarningSounds(true);
+                }else if(value == Red)
+                {
+                    Instance.WarningSounds(false);
+                }
+            }
+            _BatteryColor = value;
+        }
+    }
     public float BatteryTimer;
    
 
     public static Color Green;
     public static Color Yellow;
     public static Color Red;
+    private static BatteryUI Instance;
+
+    private AudioSource BatterySounds;
+    public AudioClip YellowAlert;
+    public AudioClip RedAlert;
 
     protected static float _BatteryLife;
     public static float BatteryLife
@@ -83,9 +106,19 @@ public class BatteryUI : MonoBehaviour
 
         // Sets starting BatteryLife
         BatteryLife = 1f;
+        Instance = this;
+
+        BatterySounds = GetComponent<AudioSource>();
 
     }
 
+    public void WarningSounds(bool yellow)
+    {
+
+        BatterySounds.PlayOneShot(yellow ? YellowAlert : RedAlert);
+
+
+    }
 
     // Update is called once per frame
     void Update()
