@@ -17,7 +17,7 @@ public class UIRetry : MonoBehaviour
 
 	public void Retry(bool retry) {
 		//load appropriate level depending on whether the players retrying or not
-
+		LevelManager.CallEvent(retry ? GameEvent.reset : GameEvent.MainMenu);
 	}
 
 }

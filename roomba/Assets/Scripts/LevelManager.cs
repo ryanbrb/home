@@ -13,7 +13,7 @@ public class GameTag {
 }
 
 public enum GameEvent {
-BatteryDead, Warning, NextLevel, reset
+BatteryDead, Warning, NextLevel, reset, MainMenu
 }
 
 
