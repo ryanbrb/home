@@ -45,9 +45,13 @@ public class Roomba : MonoBehaviour{
 
 	private float PauseTime = 0;
 
-
+	private bool Killed = false;
     private void FixedUpdate() 
 	{
+		if(Killed)
+		{
+			return;
+		}
         //rig.MovePosition(rig.position + )
         if(target == objective || target == trans) {
             Scan(target == trans);
@@ -176,6 +180,13 @@ public class Roomba : MonoBehaviour{
                 break;
         }
     }
+
+
+	public void kill()
+	{
+		Killed = true;
+		rig.velocity = Vector2.zero;
+	}
 
     public static float BoundsContainedPercentage(Bounds obj, Bounds region) {
         var total = 1f;

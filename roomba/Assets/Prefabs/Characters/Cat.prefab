@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41186e38dec7248cbb63be0dd47ab1ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scareTime: 0
+  myAnimation: {fileID: 9125893403233480777}
 --- !u!50 &7418676996233679106
 Rigidbody2D:
   serializedVersion: 4

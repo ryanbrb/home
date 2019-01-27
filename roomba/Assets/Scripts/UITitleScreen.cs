@@ -14,19 +14,16 @@ public class UITitleScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //buttons = FindObjectsOfType<Button>();
-        //if (buttons.Length > 2)
-        //{
-        //    currentButton = buttons[2];
-        //    buttonIndex = 2;
-        //    currentButton.Select();
-        //}
+		if (buttons.Length < 1)
+		{
+			buttons = FindObjectsOfType<Button>();
 
-        currentButton = buttons[0];
+			currentButton = buttons[0];
+			buttonIndex = 0;
+			currentButton.Select();
+		}
+		currentButton = buttons[0];
         buttonIndex = 0;
-        Music.instance.SceneChange(Music.SceneTypeList.Menu, "main");
-
-
     }
 
     // Update is called once per frame

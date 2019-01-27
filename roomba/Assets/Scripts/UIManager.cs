@@ -9,9 +9,10 @@ public class UIManager : MonoBehaviour
     private string screenName;
     private Cat playerCat;
     private Vector3 v3;
+	[SerializeField]
     private UITitleScreen titleScreen;
     public bool menuMove;
-
+	public bool isMenu;
 
     delegate void MovementDelegate(Vector3 v3);
     MovementDelegate movement;
@@ -23,14 +24,16 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        menuMove = true;
+		if(isMenu == null)
+			isMenu = true;
         menu += MoveSelection;
         currentScene = SceneManager.GetActiveScene();
         screenName = currentScene.name;
 
-        if (screenName == "main")
+        if (screenName == "main" || isMenu)
         {
-            titleScreen = (UITitleScreen)FindObjectOfType(typeof(UITitleScreen));
+			Music.instance.SceneChange(Music.SceneTypeList.Menu, "main");
+			titleScreen = (UITitleScreen)FindObjectOfType(typeof(UITitleScreen));
         }
         else
         {
@@ -41,7 +44,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (screenName == "main") 
+        if (screenName == "main" || isMenu) 
         {
             if(Input.GetAxis("Vertical") > 0 && menuMove)
             {

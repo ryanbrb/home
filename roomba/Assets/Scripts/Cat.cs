@@ -7,6 +7,7 @@ public class Cat : MonoBehaviour
     private float speed;
     private Vector3 myScale;
     public float scareTime;
+	public Animator myAnimation;
 
 
     // Start is called before the first frame update
@@ -44,6 +45,16 @@ public class Cat : MonoBehaviour
 
     public void MoveDiagonal(Vector3 v3)
     {
+		if(Mathf.Abs(v3.x) > 0) // != Vector3.zero)
+		{
+			myAnimation.SetBool("Moving", true);
+		}
+		else
+		{
+			myAnimation.SetBool("Moving", false);
+		}
+
+
         if (v3.x > 0)
         {
             Vector3 newScale = myScale;

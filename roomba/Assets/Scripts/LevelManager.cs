@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour
 
 	private static int ResetCounter = 0;
 	public SpriteRenderer[] Hints;
-
+	private bool isRefreshed = true;
 	public void Start()
 	{
 		LevelManager.ThisisMe = this;
@@ -94,6 +94,9 @@ public class LevelManager : MonoBehaviour
 			case GameEvent.reset:
 				ThisisMe.ResetLevel();
 				break;
+			case GameEvent.MainMenu:
+				ThisisMe.LoadScene("menu");
+				break;
 		}
 	}
 	
@@ -118,8 +121,18 @@ public class LevelManager : MonoBehaviour
 	}
 	private void Lose()
 	{
-		ThisisMe.soundTrigger = Sound.SoundTrigger.LoseSound;
-		ResetLevel();
+		if (isRefreshed)
+		{
+			GameObject.Find("Roomba").GetComponent<Roomba>().kill();
+			isRefreshed = false;
+			ThisisMe.soundTrigger = Sound.SoundTrigger.LoseSound;
+			//ResetLevel();
+			GameObject go = Resources.Load<GameObject>("UI_Retry");
+			go = Instantiate(go);
+			go.GetComponent<Canvas>().worldCamera = Camera.main;
+		}
+
+
 		//Load("main");
 	}
 	private void ResetLevel()

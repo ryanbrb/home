@@ -10,8 +10,8 @@ public class UIRetry : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		retry = transform.Find("YesButton").GetComponent<Button>();
-		toMain = transform.Find("NoButton").GetComponent<Button>();
+		retry = GameObject.Find("YesButton").GetComponent<Button>();
+		toMain = GameObject.Find("NoButton").GetComponent<Button>();
 
     }
 
