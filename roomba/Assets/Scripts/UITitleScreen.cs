@@ -44,11 +44,13 @@ public class UITitleScreen : MonoBehaviour
                 currentButton = buttons[buttonIndex - 1];
                 buttonIndex -= 1;
                 //currentButton.Select();
+                Sound.instance.MakeSound(Sound.SoundTrigger.MenuSceneChange, null);
             }
             catch (Exception e)
             {
                 print("error");
             }
+            Debug.Log("End of try catch up");
         }
         else if (action == "down")
         {
@@ -58,11 +60,13 @@ public class UITitleScreen : MonoBehaviour
                 currentButton = buttons[buttonIndex + 1];
                 buttonIndex += 1;
                 //currentButton.Select();
+                Sound.instance.MakeSound(Sound.SoundTrigger.MenuSceneChange, null);
             }
             catch (Exception)
             {
                 print("error");
             }
+            Debug.Log("End of try catch down");
         }
         else if (action == "select")
         {
