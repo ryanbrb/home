@@ -19,8 +19,8 @@ BatteryDead, Warning, NextLevel, reset, MainMenu
 
 public class LevelManager : MonoBehaviour
 {
-	private static string[] Level = {"Nothing!", "Room01",  "Room02",   "Room03",   "Room04",   "Room05",   "Room06",   "Room07",   "Room08",   "Room09" };
-	private static string[] LevelNames = { "Nothing!", "Room01",    "Room02",   "Room03",   "Room04",   "Room05",   "Room06",   "Room07",   "Room08",   "Room09"};
+	private static string[] Level = {"Nothing!", "Room01",  "Room02",   "Room03",   "Room04",   "Room05",   "Room06",   "Room07",   "Room08",   "Room09", "credits" };
+	private static string[] LevelNames = { "Nothing!", "Room01",    "Room02",   "Room03",   "Room04",   "Room05",   "Room06",   "Room07",   "Room08",   "Room09", ""};
 	private static List<string> OtherScenes = new List<string>(new string[] {"main", "credits", "Lose", "Win"});
 
 	[SerializeField]
