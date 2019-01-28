@@ -252,6 +252,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2123604700124271146, guid: 2fead439cd603024c9cbf08f096b571b,
+        type: 3}
+      propertyPath: SceneToLoad
+      value: Room06
+      objectReference: {fileID: 0}
     - target: {fileID: 2123604700124271145, guid: 2fead439cd603024c9cbf08f096b571b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -306,11 +311,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2123604700124271146, guid: 2fead439cd603024c9cbf08f096b571b,
-        type: 3}
-      propertyPath: SceneToLoad
-      value: Room06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fead439cd603024c9cbf08f096b571b, type: 3}
@@ -730,11 +730,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4478802464758595304, guid: 61d31da4ee98749aeb88a75af430e772,
-        type: 3}
-      propertyPath: m_Name
-      value: UIManager
-      objectReference: {fileID: 0}
     - target: {fileID: 2715973079687214226, guid: 61d31da4ee98749aeb88a75af430e772,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -789,6 +784,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478802464758595304, guid: 61d31da4ee98749aeb88a75af430e772,
+        type: 3}
+      propertyPath: m_Name
+      value: UIManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61d31da4ee98749aeb88a75af430e772, type: 3}

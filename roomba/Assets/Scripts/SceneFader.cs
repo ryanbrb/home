@@ -18,6 +18,20 @@ public class SceneFader : MonoBehaviour
     public Image CutsceneImage5;
     public GameObject ImageGameObject6;
     public Image CutsceneImage6;
+    public GameObject ImageGameObject7;
+    public Image CutsceneImage7;
+    public GameObject ImageGameObject8;
+    public Image CutsceneImage8;
+    //public GameObject ImageGameObject9;
+    //public Image CutsceneImage9;
+    //public GameObject ImageGameObject10;
+    //public Image CutsceneImage10;
+    //public GameObject ImageGameObject11;
+    //public Image CutsceneImage11;
+    //public GameObject ImageGameObject12;
+    //public Image CutsceneImage12;
+    //public GameObject ImageGameObject13;
+    //public Image CutsceneImage13;
 
     private Color CutsceneColor = Color.white;
     bool isChanging1 = false;
@@ -26,6 +40,13 @@ public class SceneFader : MonoBehaviour
     bool isChanging4 = false;
     bool isChanging5 = false;
     bool isChanging6 = false;
+    bool isChanging7 = false;
+    bool isChanging8 = false;
+    //bool isChanging9 = false;
+    //bool isChanging10 = false;
+    //bool isChanging11 = false;
+    //bool isChanging12 = false;
+    //bool isChanging13 = false;
 
     public float lerpTime = 0.5f;
     public float CutsceneDelay1;
@@ -34,6 +55,13 @@ public class SceneFader : MonoBehaviour
     public float CutsceneDelay4;
     public float CutsceneDelay5;
     public float CutsceneDelay6;
+    public float CutsceneDelay7;
+    public float CutsceneDelay8;
+    //public float CutsceneDelay9;
+    //public float CutsceneDelay10;
+    //public float CutsceneDelay11;
+    //public float CutsceneDelay12;
+    //public float CutsceneDelay13;
     float _timeStartedLerping;
     float timeSinceStarted;
 
@@ -50,6 +78,13 @@ public class SceneFader : MonoBehaviour
         Invoke("ChangeColor4", CutsceneDelay4);
         Invoke("ChangeColor5", CutsceneDelay5);
         Invoke("ChangeColor6", CutsceneDelay6);
+        Invoke("ChangeColor7", CutsceneDelay7);
+        Invoke("ChangeColor8", CutsceneDelay8);
+        //Invoke("ChangeColor9", CutsceneDelay9);
+        //Invoke("ChangeColor10", CutsceneDelay10);
+        //Invoke("ChangeColor11", CutsceneDelay11);
+        //Invoke("ChangeColor12", CutsceneDelay12);
+        //Invoke("ChangeColor13", CutsceneDelay13);
     }
 
 
@@ -102,6 +137,63 @@ public class SceneFader : MonoBehaviour
         _timeStartedLerping = Time.time;
 
     }
+
+    void ChangeColor7()
+    {
+        isChanging7 = true;
+        //Invoke
+        _timeStartedLerping = Time.time;
+
+    }
+
+    void ChangeColor8()
+    {
+        isChanging8 = true;
+        //Invoke
+        _timeStartedLerping = Time.time;
+
+    }
+
+    //void ChangeColor9()
+    //{
+    //    isChanging9 = true;
+    //    //Invoke
+    //    _timeStartedLerping = Time.time;
+
+    //}
+
+    //void ChangeColor10()
+    //{
+    //    isChanging10 = true;
+    //    //Invoke
+    //    _timeStartedLerping = Time.time;
+
+    //}
+
+    //void ChangeColor11()
+    //{
+    //    isChanging11 = true;
+    //    //Invoke
+    //    _timeStartedLerping = Time.time;
+
+    //}
+
+    //void ChangeColor12()
+    //{
+    //    isChanging12 = true;
+    //    //Invoke
+    //    _timeStartedLerping = Time.time;
+
+    //}
+
+    //void ChangeColor13()
+    //{
+    //    isChanging13 = true;
+    //    //Invoke
+    //    _timeStartedLerping = Time.time;
+
+    //}
+
 
     private void Update()
     {
@@ -190,6 +282,108 @@ public class SceneFader : MonoBehaviour
                 isChanging6 = false;
             }
         }
+        else if (isChanging7)
+        {
+            timeSinceStarted = Time.time - _timeStartedLerping;
+            float percentageComplete = timeSinceStarted / lerpTime;
+            float currentValue = Mathf.Lerp(1f, 0f, percentageComplete);
+            CutsceneColor.a = currentValue;
+
+            CutsceneImage7.color = CutsceneColor;
+
+            if (currentValue <= 0f)
+            {
+                isChanging7 = false;
+            }
+        }
+        else if (isChanging8)
+        {
+            timeSinceStarted = Time.time - _timeStartedLerping;
+            float percentageComplete = timeSinceStarted / lerpTime;
+            float currentValue = Mathf.Lerp(1f, 0f, percentageComplete);
+            CutsceneColor.a = currentValue;
+
+            CutsceneImage8.color = CutsceneColor;
+
+            if (currentValue <= 0f)
+            {
+                isChanging8 = false;
+            }
+        }
+        //else if (isChanging9)
+        //{
+        //    timeSinceStarted = Time.time - _timeStartedLerping;
+        //    float percentageComplete = timeSinceStarted / lerpTime;
+        //    float currentValue = Mathf.Lerp(1f, 0f, percentageComplete);
+        //    CutsceneColor.a = currentValue;
+
+        //    CutsceneImage9.color = CutsceneColor;
+
+        //    if (currentValue <= 0f)
+        //    {
+        //        isChanging9 = false;
+        //    }
+        //}
+        //else if (isChanging10)
+        //{
+        //    timeSinceStarted = Time.time - _timeStartedLerping;
+        //    float percentageComplete = timeSinceStarted / lerpTime;
+        //    float currentValue = Mathf.Lerp(1f, 0f, percentageComplete);
+        //    CutsceneColor.a = currentValue;
+
+        //    CutsceneImage10.color = CutsceneColor;
+
+        //    if (currentValue <= 0f)
+        //    {
+        //        isChanging10 = false;
+        //    }
+        //}
+        //else if (isChanging11)
+        //{
+        //    timeSinceStarted = Time.time - _timeStartedLerping;
+        //    float percentageComplete = timeSinceStarted / lerpTime;
+        //    float currentValue = Mathf.Lerp(1f, 0f, percentageComplete);
+        //    CutsceneColor.a = currentValue;
+
+        //    CutsceneImage11.color = CutsceneColor;
+
+        //    if (currentValue <= 0f)
+        //    {
+        //        isChanging11 = false;
+        //    }
+        //}
+        //else if (isChanging12)
+        //{
+        //    timeSinceStarted = Time.time - _timeStartedLerping;
+        //    float percentageComplete = timeSinceStarted / lerpTime;
+        //    float currentValue = Mathf.Lerp(1f, 0f, percentageComplete);
+        //    CutsceneColor.a = currentValue;
+
+        //    CutsceneImage12.color = CutsceneColor;
+
+        //    if (currentValue <= 0f)
+        //    {
+        //        isChanging12 = false;
+        //    }
+        //}
+        //else if (isChanging13)
+        //{
+        //    timeSinceStarted = Time.time - _timeStartedLerping;
+        //    float percentageComplete = timeSinceStarted / lerpTime;
+        //    float currentValue = Mathf.Lerp(1f, 0f, percentageComplete);
+        //    CutsceneColor.a = currentValue;
+
+        //    CutsceneImage13.color = CutsceneColor;
+
+        //    if (currentValue <= 0f)
+        //    {
+        //        isChanging13 = false;
+        //    }
+        //}
+
+
+
+
 
 
         //public CanvasGroup CutsceneShot;
